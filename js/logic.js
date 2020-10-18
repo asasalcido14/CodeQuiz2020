@@ -9,6 +9,7 @@ const selectionsEl = document.getElementById("selections");
 const questionsEl = document.getElementById("questions");
 const timerEl = document.getElementById("time");
 const beginBtn = document.getElementById("begin");
+const graderEl = document.getElementById("grader");
 
 
 // Begin Quiz (Function) 
@@ -58,3 +59,40 @@ function grabQuestion() {
     selectionsEl.appendChild(selectionPack);
     });
 }
+
+function selectionGrab() {
+
+      // an if statement that checks the accuracy of the users input
+  if (this.value !== questions[currentQuestionIndex].answer) {
+
+    time -= 15;
+
+    if (time < 0) {
+      time = 0;
+    }
+
+    // display new time on page
+    timerEl.textContent = time;
+
+ } else {
+   
+    graderEl.textContent = "Correct!";
+  }
+
+  // flash right/wrong feedback on page for half a second
+  graderEl.setAttribute("class", "feedback");
+  setTimeout(function() {
+    graderEl.setAttribute("class", "feedback hide");
+  }, 1000);
+
+  // move to next question
+  currentQuestionIndex++;
+
+  // check if we've run out of questions
+  if (currentQuestionIndex === questions.length) {
+    quizFinish();
+  } else {
+    grabQuestion();
+  }
+}
+
