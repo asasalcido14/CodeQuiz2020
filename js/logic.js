@@ -31,5 +31,6 @@ function beginQuiz() {
 }
 
 function grabQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
     
 }
