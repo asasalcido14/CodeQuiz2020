@@ -6,7 +6,7 @@ let timerId;
 
 // variables for the front end
 const graderEl = document.getElementById("grader");
-const selectionsEl = document.getElementById("selections");
+const selectionsEl = document.getElementById("selection");
 const signatureEl = document.getElementById("signature");
 const questionsEl = document.getElementById("questions");
 const timerEl = document.getElementById("time");
@@ -24,7 +24,7 @@ function beginQuiz() {
     questionsEl.removeAttribute("class");
 
     //start the timer
-    timerId = setInterval(clockTick, 1000);
+    timerId = setInterval(timeProg, 1000);
 
     //display time
     timerEl.textContent = time;
@@ -38,14 +38,14 @@ function grabQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
 
     // title for current question
-    const titleEl = document.getElementById("title");
+    const titleEl = document.getElementById("question-title");
     titleEl.textContent = currentQuestion.title;
 
     //selections will be cleared
     selectionsEl.innerHTML = "";
 
     //loop over selections
-    currentQuestion.selections.forEach(function (selections, i) {
+    currentQuestion.selection.forEach(function (selection, i) {
 
         //make a new button for each selection 
         const selectionPack = document.createElement("button");
@@ -159,5 +159,6 @@ sendBtn.onclick = saveGrade;
 
 // button to fire quiz(beginQuiz)
 beginBtn.onclick = beginQuiz;
+console.log(beginQuiz);
 
 signatureEl.onkeyup = hitEnter;
