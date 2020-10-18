@@ -96,3 +96,19 @@ function selectionGrab() {
   }
 }
 
+function quizFinish() {
+
+    // we need to stop the timer
+    clearInterval(timerId)
+    //update page when quiz ends
+
+    // show final grade
+
+    // cloak questions section
+
+    //
+}
+
+// button to fire quiz(beginQuiz)
+beginBtn.onclick = beginQuiz;
+
