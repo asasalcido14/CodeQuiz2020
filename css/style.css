@@ -1,8 +1,16 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 100%;
-};
+}
 
 .comenzar {
-    
+    text-align: center;
 }
+
+.cloak {
+    display: none;
+}
+
+.selections button {
+    display: block;
+  }
