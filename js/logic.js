@@ -18,7 +18,7 @@ function beginQuiz() {
 
     const startPartEl = document.getElementById("start-part");
 
-    startPartEl.setAttribute("class", "hide")
+    startPartEl.setAttribute("class", "cloak")
 
     // take question cloak off
     questionsEl.removeAttribute("class");
@@ -62,7 +62,6 @@ function grabQuestion() {
 }
 
 function selectionGrab() {
-
     // an if statement that checks the accuracy of the users input
     if (this.value !== questions[currentQuestionIndex].answer) {
 
@@ -74,6 +73,7 @@ function selectionGrab() {
 
         // display new time on page
         timerEl.textContent = time;
+        graderEl.textContent = "Wrong!";
 
     } else {
 
@@ -81,9 +81,9 @@ function selectionGrab() {
     }
 
     // flash right/wrong feedback on page for half a second
-    graderEl.setAttribute("class", "feedback");
+    graderEl.setAttribute("class", "grader");
     setTimeout(function () {
-        graderEl.setAttribute("class", "feedback hide");
+        graderEl.setAttribute("class", "grader cloak");
     }, 1000);
 
     // move to next question
@@ -100,7 +100,7 @@ function selectionGrab() {
 function quizFinish() {
 
     // we need to stop the timer
-    clearInterval(timerId)
+    clearInterval(timerId);
 
 
     //update page when quiz ends
@@ -135,16 +135,17 @@ function saveGrade() {
             JSON.parse(window.localStorage.getItem("highgrades")) || [];
 
         const newGrade = {
-            grades: time,
+            grade: time,
             signature: signature
         };
 
+
+        highgrades.push(newGrade);
+
+        window.localStorage.setItem("highgrades", JSON.stringify(highgrades));
+
+        window.location.href = "highgrades.html";
     }
-    highgrades.push(newGrade);
-
-    window.localStorage.setItem("highgrades", JSON.stringify(highgrades));
-
-    window.location.href = "highgrades.html";
 }
 
 

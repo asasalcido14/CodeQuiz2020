@@ -2,12 +2,12 @@ function showHighGrades() {
 const highgrades = JSON.parse(window.localStorage.getItem("highgrades")) || [];
 
 highgrades.sort(function(a, b) {
-    return b.score - a.score;
+    return b.grade - a.grade;
   });
 
-  highgrades.forEach(function(score) {
+  highgrades.forEach(function(grade) {
     const liTag = document.createElement("li");
-    liTag.textContent = score.initials + " - " + score.score;
+    liTag.textContent = grade.signature + " - " + grade.grade;
 
     const olEl = document.getElementById("highgrades");
     olEl.appendChild(liTag);
