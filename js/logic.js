@@ -65,7 +65,7 @@ function selectionGrab() {
     // an if statement that checks the accuracy of the users input
     if (this.value !== questions[currentQuestionIndex].answer) {
 
-        time -= 15;
+        time -= 5;
 
         if (time < 0) {
             time = 0;
